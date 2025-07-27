@@ -1,0 +1,90 @@
+/* File: codeZone/vendorconex/frontend/src/styles/LogoutConfirmation.css */
+
+.logout-confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* Adjust based on navbar height, e.g., 60px */
+    background-color: #f0f2f5; /* Light background for the page */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.logout-confirmation-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    max-width: 450px; /* Adjust as needed */
+    width: 100%;
+}
+
+.logout-confirmation-title {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.logout-confirmation-message {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.logout-confirmation-sub-message {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.logout-confirmation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+}
+
+.logout-cancel-button,
+.logout-confirm-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-cancel-button {
+    background-color: #f8f8f8; /* Light grey background */
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.logout-cancel-button:hover {
+    background-color: #e8e8e8;
+}
+
+.logout-confirm-button {
+    background-color: #dc3545; /* Red logout button */
+    color: white;
+}
+
+.logout-confirm-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Basic responsiveness */
+@media (max-width: 600px) {
+    .logout-confirmation-card {
+        padding: 25px;
+    }
+    .logout-confirmation-buttons {
+        flex-direction: column; /* Stack buttons on small screens */
+    }
+    .logout-cancel-button,
+    .logout-confirm-button {
+        width: 100%; /* Full width for stacked buttons */
+    }
+}

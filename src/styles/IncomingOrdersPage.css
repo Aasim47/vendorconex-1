@@ -1,0 +1,179 @@
+/* codeZone/venderconex/frontend/src/styles/IncomingOrdersPage.css */
+
+.incoming-orders-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    color: var(--text-color);
+}
+
+body.dark-mode .incoming-orders-container {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    color: var(--dark-text-color);
+}
+
+.incoming-orders-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+body.dark-mode .incoming-orders-container h2 {
+    color: var(--dark-primary-color);
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: var(--input-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.dark-mode .order-card {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.order-details h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+body.dark-mode .order-details h3 {
+    color: var(--dark-primary-color);
+}
+
+.order-details p {
+    margin: 8px 0;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+body.dark-mode .order-details p {
+    color: var(--dark-text-color);
+}
+
+.order-details p strong {
+    color: var(--text-color-light);
+}
+
+body.dark-mode .order-details p strong {
+    color: var(--dark-text-color-light);
+}
+
+.order-status-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+body.dark-mode .order-status-section {
+    border-color: var(--dark-border-color);
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+}
+
+/* Status specific colors */
+.status-pending { background-color: #ffc107; color: #333; } /* Yellow */
+.status-processing { background-color: #17a2b8; } /* Cyan */
+.status-shipped { background-color: #007bff; } /* Blue */
+.status-delivered { background-color: #28a745; } /* Green */
+.status-cancelled { background-color: #dc3545; } /* Red */
+
+/* Dark mode adjustments for status badges with dark text */
+body.dark-mode .status-pending { background-color: #ffd700; color: #333; }
+
+
+.status-dropdown {
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body.dark-mode .status-dropdown {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+}
+
+.status-dropdown:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+body.dark-mode .status-dropdown:focus {
+    border-color: var(--dark-primary-color);
+    box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.3);
+}
+
+/* For empty states */
+.orders-loading, .orders-error, .no-orders {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2em;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .orders-loading, body.dark-mode .orders-error, body.dark-mode .no-orders {
+    color: var(--dark-text-color-light);
+}
+
+.no-orders h2 {
+    color: var(--primary-color);
+}
+
+body.dark-mode .no-orders h2 {
+    color: var(--dark-primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .incoming-orders-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+    .order-card {
+        padding: 15px;
+    }
+    .order-status-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

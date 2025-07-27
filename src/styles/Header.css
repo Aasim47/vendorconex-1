@@ -1,0 +1,155 @@
+/* frontend/src/styles/Header.css - UPDATED */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 60px;
+}
+
+.header-left, .header-right { /* Removed header-center */
+    display: flex;
+    align-items: center;
+}
+
+/* VendorConex Logo */
+.header-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-logo svg {
+    width: 28px;
+    height: 28px;
+    fill: #4CAF50;
+}
+
+/* Main Navigation Links */
+.main-nav {
+    display: flex;
+    gap: 30px;
+    margin-left: 40px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #4CAF50;
+}
+
+/* UPDATED: Role Toggle - make it smaller and aesthetic for its new place */
+.role-toggle {
+    display: flex;
+    background-color: #f0f2f5; /* Light grey background */
+    border-radius: 18px; /* Slightly more rounded and smaller */
+    overflow: hidden;
+    /* margin-left: 30px; Removed, will be handled by gap in header-right */
+    padding: 2px; /* Small padding inside the toggle container */
+}
+
+.role-toggle button {
+    padding: 6px 15px; /* Reduced padding for smaller buttons */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px; /* Slightly smaller font size */
+    color: #555;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 16px; /* Apply border-radius to individual buttons for better active state */
+}
+
+.role-toggle button.active {
+    background-color: #4285F4; /* Blue for active role */
+    color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15); /* Subtle shadow for active button */
+}
+
+/* REMOVED: Location Selector styles */
+/*
+.location-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-left: 30px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #555;
+    transition: background-color 0.2s ease;
+}
+
+.location-selector:hover {
+    background-color: #e0e2e5;
+}
+
+.location-selector svg {
+    width: 18px;
+    height: 18px;
+    fill: #555;
+}
+*/
+
+/* Right-hand side icons (Search, Notifications, Profile) */
+.header-right.header-icons { /* Combine classes for specificity */
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjusted space between elements */
+    margin-left: auto; /* Push icons to the far right */
+}
+
+.header-icons .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.header-icons .icon-btn:hover {
+    opacity: 0.7;
+}
+
+.header-icons .icon-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #555;
+}
+
+/* Adjustments for Profile Dropdown within the header */
+.profile-dropdown-container {
+    margin-left: 15px; /* Adjust space from previous element (Bell icon) */
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure dropdown content positions correctly relative to its trigger */
+.profile-dropdown-container .profile-dropdown-content {
+    right: 0;
+    left: auto;
+    top: calc(100% + 10px); /* Keep consistent dropdown positioning */
+}

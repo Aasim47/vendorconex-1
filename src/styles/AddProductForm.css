@@ -1,0 +1,106 @@
+/* codeZone/venderconex/frontend/src/styles/AddProductForm.css */
+
+.add-product-form-container {
+    max-width: 600px;
+    margin: 40px auto; /* Centers the form horizontally with some vertical spacing */
+    padding: 30px;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    color: var(--text-color);
+}
+
+body.dark-mode .add-product-form-container {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    color: var(--dark-text-color);
+}
+
+.add-product-form-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+body.dark-mode .add-product-form-container h2 {
+    color: var(--dark-primary-color);
+}
+
+.add-product-form .form-group {
+    margin-bottom: 20px;
+}
+
+.add-product-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .add-product-form .form-group label {
+    color: var(--dark-text-color-light);
+}
+
+.add-product-form .form-group input[type="text"],
+.add-product-form .form-group input[type="number"],
+.add-product-form .form-group input[type="url"],
+.add-product-form .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+}
+
+body.dark-mode .add-product-form .form-group input,
+body.dark-mode .add-product-form .form-group textarea {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+}
+
+.add-product-form .form-group input:focus,
+.add-product-form .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+body.dark-mode .add-product-form .form-group input:focus,
+body.dark-mode .add-product-form .form-group textarea:focus {
+    border-color: var(--dark-primary-color);
+    box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.3);
+}
+
+.add-product-form textarea {
+    resize: vertical; /* Allows the user to resize the textarea vertically */
+}
+
+.add-product-form .submit-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .add-product-form .submit-button {
+    background-color: var(--dark-primary-color);
+}
+
+.add-product-form .submit-button:hover {
+    background-color: #3d8c40; /* Slightly darker green on hover */
+}
+
+body.dark-mode .add-product-form .submit-button:hover {
+    background-color: #7BC37E;
+}

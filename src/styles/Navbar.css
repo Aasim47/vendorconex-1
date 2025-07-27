@@ -1,0 +1,1091 @@
+/* codeZone/venderconex/frontend/src/styles/Navbar.css */
+
+/* --- General Navbar Container and Layout --- */
+.navbar-container {
+    display: flex;
+    /* Use space-between to push left and right groups to ends,
+        and center-section-rect will then be aligned centrally with margin: auto */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Light background for default mode */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+/* Dark mode specific styles */
+body.dark-mode .navbar-container {
+    background-color: #333333; /* Darker background for dark mode */
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Left Group: Back Arrow, Brand, AND Mode Toggle --- */
+.navbar-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between back arrow, brand, and toggle */
+}
+
+.back-arrow-button {
+    background: none;
+    border: none;
+    color: #333; /* Default icon color */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em; /* Adjust icon size */
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .back-arrow-button {
+    color: #ddd; /* Dark mode icon color */
+}
+
+.back-arrow-button:hover {
+    color: #007bff; /* Primary color on hover */
+}
+
+body.dark-mode .back-arrow-button:hover {
+    color: #87ceeb; /* Lighter blue for dark mode hover */
+}
+
+.navbar-brand a {
+    font-weight: bold;
+    font-size: 24px;
+    color: #007bff; /* Primary brand color */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .navbar-brand a {
+    color: #87ceeb; /* Lighter blue for dark mode brand */
+}
+
+.navbar-brand a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+body.dark-mode .navbar-brand a:hover {
+    color: #5bbde5;
+}
+
+/* --- Mode Toggle Buttons (Adjusted Size) --- */
+.navbar-mode-toggle {
+    display: flex;
+    border: 1px solid #007bff; /* Border for the toggle group */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures rounded corners apply to buttons */
+    /* MODIFIED: Make the entire toggle group a little smaller */
+    transform: scale(0.85); /* Reduce overall size slightly */
+    transform-origin: left center; /* Scale from the left edge */
+}
+
+body.dark-mode .navbar-mode-toggle {
+    border-color: #87ceeb;
+}
+
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    /* MODIFIED: Making padding symmetrical to create a more square appearance */
+    padding: 8px 8px; /* Slightly reduced padding for a smaller square look */
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller font size */
+    color: #007bff; /* Text color for inactive button */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode .toggle-button {
+    color: #87ceeb;
+}
+
+.toggle-button:first-child {
+    border-right: 1px solid #007bff; /* Separator between buttons */
+}
+
+body.dark-mode .toggle-button:first-child {
+    border-right-color: #87ceeb;
+}
+
+.toggle-button.active {
+    background-color: #007bff; /* Active button background */
+    color: white; /* Active button text color */
+}
+
+body.dark-mode .toggle-button.active {
+    background-color: #87ceeb;
+    color: #333;
+}
+
+/* --- Center Section: Search/Add Products (Prominent and Centered) --- */
+.navbar-center-section-rect {
+    /* MODIFIED: Flex-grow removed, using auto margins for centering */
+    /* flex-grow: 1; */
+    max-width: 600px; /* Limit width for larger screens */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    position: relative; /* For dropdown positioning */
+    display: flex;
+    align-items: center; /* Vertically align items */
+    border: 1px solid #ccc; /* Rectangular border */
+    border-radius: 8px; /* Slightly rounded corners for a modern rectangle */
+    overflow: hidden; /* Ensures contents don't bleed out of rounded corners */
+    background-color: #f8f9fa; /* Light background for the search/add area */
+    margin: 0 auto; /* This centers the element within its flex container */
+}
+
+body.dark-mode .navbar-center-section-rect {
+    background-color: #444;
+    border-color: #666;
+}
+
+.navbar-search-box-with-button {
+    display: flex;
+    width: 100%;
+}
+
+.search-input-navbar {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none; /* Remove individual input border */
+    outline: none;
+    font-size: 16px;
+    background-color: transparent; /* Inherit from parent */
+    color: #333;
+}
+
+body.dark-mode .search-input-navbar {
+    color: #eee;
+}
+
+.search-button-inside-box {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+body.dark-mode .search-button-inside-box {
+    background-color: #87ceeb;
+    color: #333;
+}
+
+.search-button-inside-box:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .search-button-inside-box:hover {
+    background-color: #5bbde5;
+}
+
+.search-recommendations-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the search box */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none; /* No top border, as it connects to search box */
+    border-radius: 0 0 8px 8px; /* Rounded only at bottom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+body.dark-mode .search-recommendations-dropdown {
+    background-color: #444;
+    border-color: #666;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.recommendation-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+body.dark-mode .recommendation-item {
+    color: #eee;
+}
+
+.recommendation-item:hover {
+    background-color: #f0f0f0;
+}
+
+body.dark-mode .recommendation-item:hover {
+    background-color: #555;
+}
+
+/* ADD PRODUCTS BUTTON STYLING (for supplier mode) */
+.add-products-button {
+    background-color: #28a745; /* Green color for add action */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Slightly more padding for a button */
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Make it fill the rectangular area */
+    text-align: center;
+    transition: background-color 0.2s ease;
+    border-radius: 7px; /* Matches the parent's border-radius visually */
+}
+
+body.dark-mode .add-products-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.add-products-button:hover {
+    background-color: #218838;
+}
+
+body.dark-mode .add-products-button:hover {
+    background-color: #45a049;
+}
+
+
+/* --- Right Group: Icons & Profile --- */
+.navbar-right-group {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between items */
+}
+
+.navbar-home-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .navbar-home-button {
+    color: #ddd;
+}
+
+.navbar-home-button:hover {
+    color: #007bff;
+}
+
+body.dark-mode .navbar-home-button:hover {
+    color: #87ceeb;
+}
+
+.navbar-icon-button {
+    background: none;
+    border: none;
+    color: #333; /* Default icon color */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    position: relative; /* For notification dot */
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .navbar-icon-button {
+    color: #ddd;
+}
+
+.navbar-icon-button:hover {
+    color: #007bff;
+}
+
+body.dark-mode .navbar-icon-button:hover {
+    color: #87ceeb;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: #28a745; /* Green dot */
+    border-radius: 50%;
+    border: 1px solid #ffffff; /* Border to stand out against Navbar background */
+}
+
+body.dark-mode .notification-dot {
+    border-color: #333333; /* Dark mode border color */
+}
+
+.profile-avatar-container {
+    position: relative;
+    cursor: pointer;
+}
+
+/* MODIFIED: Make user avatar circular */
+.profile-pic-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Light border */
+    transition: border-color 0.2s ease;
+}
+
+body.dark-mode .profile-pic-icon {
+    border-color: #555;
+}
+
+.profile-avatar-container:hover .profile-pic-icon {
+    border-color: #007bff;
+}
+
+body.dark-mode .profile-avatar-container:hover .profile-pic-icon {
+    border-color: #87ceeb;
+}
+
+.profile-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    margin-top: 10px; /* Space below avatar */
+}
+
+body.dark-mode .profile-dropdown-menu {
+    background-color: #444;
+    border-color: #666;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .profile-dropdown-header {
+    border-bottom-color: #555;
+}
+
+/* Ensure profile pic in dropdown is also circular */
+.profile-dropdown-header .profile-pic-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Ensure circular in dropdown header too */
+}
+
+.profile-text-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: bold;
+    color: #333;
+}
+
+body.dark-mode .profile-name {
+    color: #eee;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+body.dark-mode .dropdown-item {
+    color: #eee;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #555;
+    color: #87ceeb;
+}
+
+.dropdown-item svg {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #dc3545; /* Red for logout */
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-mode .logout-button {
+    color: #ff6b6b;
+    border-top-color: #555;
+}
+
+.logout-button:hover {
+    background-color: #f8d7da; /* Light red background on hover */
+    color: #c82333;
+}
+
+body.dark-mode .logout-button:hover {
+    background-color: #7b2a2a;
+    color: #ff8b8b;
+}
+
+/* --- Authentication Buttons (Login/Signup) --- */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+body.dark-mode .navbar-button {
+    background-color: #87ceeb;
+    color: #333;
+}
+
+.navbar-button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .navbar-button:hover {
+    background-color: #5bbde5;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .navbar-container {
+        /* On smaller screens, allow search to take full width and wrap */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .navbar-left-group,
+    .navbar-right-group,
+    .navbar-center-section-rect {
+        width: 100%; /* Occupy full width */
+        justify-content: center; /* Center content */
+        margin-bottom: 10px; /* Spacing between wrapped sections */
+    }
+    .navbar-left-group {
+        /* Reset gap for proper wrapping on small screens */
+        gap: 10px; /* Adjust as needed */
+    }
+    .navbar-mode-toggle {
+        transform: scale(1); /* Reset scale on small screens if desired */
+        margin-left: 0; /* Remove margin from larger screens */
+        /* Potentially adjust padding here for very small screens if needed */
+        margin-top: 10px; /* Space it from brand */
+    }
+    .navbar-brand {
+        margin-right: 0; /* Remove margin from larger screens */
+    }
+    .navbar-center-section-rect {
+        margin-top: 10px; /* Space from top elements */
+        max-width: 100%; /* Allow full width */
+    }
+    .profile-dropdown-menu {
+        left: 50%; /* Center dropdown relative to parent */
+        transform: translateX(-50%);
+        right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Further adjustments for smaller tablets/large phones */
+    .navbar-brand a {
+        font-size: 20px;
+    }
+    .toggle-button {
+        font-size: 13px; /* Smaller font on small screens */
+        padding: 6px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for mobile phones */
+    .search-input-navbar,
+    .add-products-button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .navbar-button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+/* ... other CSS rules ... */
+
+/* --- Right Group: Icons & Profile --- */
+/* ... other rules in this section ... */
+
+.profile-avatar-container {
+    position: relative;
+    cursor: pointer;
+}
+
+/* MODIFIED: Ensure user avatar is perfectly circular by having equal width and height, and 50% border-radius */
+.profile-pic-icon {
+    width: 40px;   /* Explicitly set width */
+    height: 40px;  /* Explicitly set height to be equal to width */
+    border-radius: 50%; /* Make it perfectly circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion, cropping if necessary */
+    border: 2px solid #ddd; /* Light border */
+    transition: border-color 0.2s ease;
+    /* Important: Ensure no conflicting styles are setting width/height differently */
+    flex-shrink: 0; /* Prevents shrinking in flex containers */
+}
+
+body.dark-mode .profile-pic-icon {
+    border-color: #555;
+}
+
+.profile-avatar-container:hover .profile-pic-icon {
+    border-color: #007bff;
+}
+
+body.dark-mode .profile-avatar-container:hover .profile-pic-icon {
+    border-color: #87ceeb;
+}
+
+/* Ensure profile pic in dropdown is also circular and consistent */
+.profile-dropdown-header .profile-pic-icon {
+    width: 50px;    /* Larger size for dropdown header */
+    height: 50px;   /* Equal to width */
+    border-radius: 50%; /* Make it perfectly circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Consistent border */
+    /* Add any other specific styles for dropdown header avatar if needed */
+}
+
+/* ... rest of your Navbar.css ... */
+/* MODIFIED: Ensure user avatar is perfectly circular by having equal width and height, and 50% border-radius */
+.profile-pic-icon {
+    width: 40px;   /* Explicitly set width */
+    height: 40px;  /* Explicitly set height to be equal to width */
+    border-radius: 50%; /* Make it perfectly circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion, cropping if necessary */
+    border: 2px solid #ddd; /* Light border */
+    transition: border-color 0.2s ease;
+    flex-shrink: 0; /* Prevents shrinking in flex containers */
+}
+
+body.dark-mode .profile-pic-icon {
+    border-color: #555;
+}
+
+.profile-avatar-container:hover .profile-pic-icon {
+    border-color: #007bff;
+}
+
+/* Ensure user avatar is perfectly circular */
+.profile-pic-icon {
+    width: 40px;   /* Explicitly set width */
+    height: 40px;  /* Explicitly set height to be equal to width */
+    border-radius: 50%; /* Make it perfectly circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border: 2px solid #ddd; /* Light border */
+    transition: border-color 0.2s ease;
+    flex-shrink: 0; /* Prevents shrinking in flex containers */
+    display: block; /* Ensure it behaves as a block element */
+}
+
+body.dark-mode .profile-pic-icon {
+    border-color: #555;
+}
+
+.profile-avatar-container:hover .profile-pic-icon {
+    border-color: #007bff;
+}
+
+body.dark-mode .profile-avatar-container:hover .profile-pic-icon {
+    border-color: #87ceeb;
+}
+
+/* Ensure profile pic in dropdown is also circular and consistent */
+.profile-dropdown-header .profile-pic-icon {
+    width: 50px;    /* Larger size for dropdown header */
+    height: 50px;   /* Equal to width */
+    border-radius: 50%; /* Make it perfectly circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Consistent border */
+}
+
+
+/* Ensure profile pic in dropdown is also circular and consistent */
+.profile-dropdown-header .profile-pic-icon {
+    width: 50px;    /* Larger size for dropdown header */
+    height: 50px;   /* Equal to width */
+    border-radius: 50%; /* Make it perfectly circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Consistent border */
+}
+
+/* codeZone/venderconex/frontend/src/styles/Navbar.css */
+
+/* --- General Navbar Container and Layout --- */
+.navbar-container {
+    display: flex;
+    /* Use space-between to push left and right groups to ends,
+        and center-section-rect will then be aligned centrally with margin: auto */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Light background for default mode */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+/* --- Left Group: Back Arrow, Brand, AND Mode Toggle --- */
+.navbar-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between back arrow, brand, and toggle */
+}
+
+.back-arrow-button {
+    background: none;
+    border: none;
+    color: #333; /* Default icon color */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em; /* Adjust icon size */
+    transition: color 0.2s ease;
+}
+
+.back-arrow-button:hover {
+    color: #007bff; /* Primary color on hover */
+}
+
+.navbar-brand a {
+    font-weight: bold;
+    font-size: 24px;
+    color: #007bff; /* Primary brand color */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navbar-brand a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* --- Mode Toggle Buttons (Adjusted Size) --- */
+.navbar-mode-toggle {
+    display: flex;
+    border: 1px solid #007bff; /* Border for the toggle group */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures rounded corners apply to buttons */
+    /* MODIFIED: Make the entire toggle group a little smaller */
+    transform: scale(0.85); /* Reduce overall size slightly */
+    transform-origin: left center; /* Scale from the left edge */
+}
+
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    /* MODIFIED: Making padding symmetrical to create a more square appearance */
+    padding: 8px 8px; /* Slightly reduced padding for a smaller square look */
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller font size */
+    color: #007bff; /* Text color for inactive button */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-button:first-child {
+    border-right: 1px solid #007bff; /* Separator between buttons */
+}
+
+.toggle-button.active {
+    background-color: #007bff; /* Active button background */
+    color: white; /* Active button text color */
+}
+
+/* --- Center Section: Search/Add Products (Prominent and Centered) --- */
+.navbar-center-section-rect {
+    /* MODIFIED: Flex-grow removed, using auto margins for centering */
+    /* flex-grow: 1; */
+    max-width: 600px; /* Limit width for larger screens */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    position: relative; /* For dropdown positioning */
+    display: flex;
+    align-items: center; /* Vertically align items */
+    border: 1px solid #ccc; /* Rectangular border */
+    border-radius: 8px; /* Slightly rounded corners for a modern rectangle */
+    overflow: hidden; /* Ensures contents don't bleed out of rounded corners */
+    background-color: #f8f9fa; /* Light background for the search/add area */
+    margin: 0 auto; /* This centers the element within its flex container */
+}
+
+.navbar-search-box-with-button {
+    display: flex;
+    width: 100%;
+}
+
+.search-input-navbar {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none; /* Remove individual input border */
+    outline: none;
+    font-size: 16px;
+    background-color: transparent; /* Inherit from parent */
+    color: #333;
+}
+
+.search-button-inside-box {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.search-button-inside-box:hover {
+    background-color: #0056b3;
+}
+
+.search-recommendations-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the search box */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none; /* No top border, as it connects to search box */
+    border-radius: 0 0 8px 8px; /* Rounded only at bottom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.recommendation-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.recommendation-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* ADD PRODUCTS BUTTON STYLING (for supplier mode) */
+.add-products-button {
+    background-color: #28a745; /* Green color for add action */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Slightly more padding for a button */
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Make it fill the rectangular area */
+    text-align: center;
+    transition: background-color 0.2s ease;
+    border-radius: 7px; /* Matches the parent's border-radius visually */
+}
+
+.add-products-button:hover {
+    background-color: #218838;
+}
+
+/* --- Right Group: Icons & Profile --- */
+.navbar-right-group {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between items */
+}
+
+.navbar-home-button {
+    display: flex;
+    align-items: center;
+    /* Removed gap: 5px to make it icon-only */
+    color: #333;
+    text-decoration: none;
+    /* Removed font-size: 16px to allow icon's intrinsic size or specific icon styling to take precedence */
+    transition: color 0.2s ease;
+}
+
+.navbar-home-button:hover {
+    color: #007bff;
+}
+
+.navbar-icon-button {
+    background: none;
+    border: none;
+    color: #333; /* Default icon color */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    position: relative; /* For notification dot */
+    transition: color 0.2s ease;
+}
+
+.navbar-icon-button:hover {
+    color: #007bff;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: #28a745; /* Green dot */
+    border-radius: 50%;
+    border: 1px solid #ffffff; /* Border to stand out against Navbar background */
+}
+
+.profile-avatar-container {
+    position: relative;
+    cursor: pointer;
+}
+
+/* MODIFIED: Make user avatar circular */
+.profile-pic-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Light border */
+    transition: border-color 0.2s ease;
+}
+
+.profile-avatar-container:hover .profile-pic-icon {
+    border-color: #007bff;
+}
+
+.profile-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    margin-top: 10px; /* Space below avatar */
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+/* Ensure profile pic in dropdown is also circular */
+.profile-dropdown-header .profile-pic-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Ensure circular in dropdown header too */
+}
+
+.profile-text-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.dropdown-item svg {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #dc3545; /* Red for logout */
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #f8d7da; /* Light red background on hover */
+    color: #c82333;
+}
+
+/* --- Authentication Buttons (Login/Signup) --- */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .navbar-container {
+        /* On smaller screens, allow search to take full width and wrap */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .navbar-left-group,
+    .navbar-right-group,
+    .navbar-center-section-rect {
+        width: 100%; /* Occupy full width */
+        justify-content: center; /* Center content */
+        margin-bottom: 10px; /* Spacing between wrapped sections */
+    }
+    .navbar-left-group {
+        /* Reset gap for proper wrapping on small screens */
+        gap: 10px; /* Adjust as needed */
+    }
+    .navbar-mode-toggle {
+        transform: scale(1); /* Reset scale on small screens if desired */
+        margin-left: 0; /* Remove margin from larger screens */
+        /* Potentially adjust padding here for very small screens if needed */
+        margin-top: 10px; /* Space it from brand */
+    }
+    .navbar-brand {
+        margin-right: 0; /* Remove margin from larger screens */
+    }
+    .navbar-center-section-rect {
+        margin-top: 10px; /* Space from top elements */
+        max-width: 100%; /* Allow full width */
+    }
+    .profile-dropdown-menu {
+        left: 50%; /* Center dropdown relative to parent */
+        transform: translateX(-50%);
+        right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Further adjustments for smaller tablets/large phones */
+    .navbar-brand a {
+        font-size: 20px;
+    }
+    .toggle-button {
+        font-size: 13px; /* Smaller font on small screens */
+        padding: 6px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for mobile phones */
+    .search-input-navbar,
+    .add-products-button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .navbar-button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}

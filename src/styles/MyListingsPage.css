@@ -1,0 +1,464 @@
+/* codeZone/venderconex/frontend/src/styles/MyListingsPage.css */
+
+.my-listings-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    color: var(--text-color);
+}
+
+body.dark-mode .my-listings-container {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    color: var(--dark-text-color);
+}
+
+.my-listings-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+body.dark-mode .my-listings-container h2 {
+    color: var(--dark-primary-color);
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    justify-content: center;
+}
+
+.listing-card {
+    background-color: var(--input-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode .listing-card {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.listing-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode .listing-image {
+    border-color: var(--dark-border-color);
+}
+
+.listing-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.listing-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.3em;
+}
+
+body.dark-mode .listing-info h3 {
+    color: var(--dark-text-color);
+}
+
+.listing-category {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-bottom: 8px;
+}
+
+body.dark-mode .listing-category {
+    color: var(--dark-text-color-light);
+}
+
+.listing-price {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+body.dark-mode .listing-price {
+    color: var(--dark-primary-color);
+}
+
+/* NEW: Listing Rating styles */
+.listing-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.listing-rating .stars span {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 1.2em;
+    margin-right: 2px;
+}
+.listing-rating .stars span[style*="color: rgb(204, 204, 204)"] { /* For empty stars */
+    color: #ccc !important;
+}
+
+.listing-rating .rating-value {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-left: 5px;
+}
+
+body.dark-mode .listing-rating .rating-value {
+    color: var(--dark-text-color);
+}
+
+.listing-rating .review-count {
+    font-size: 0.85em;
+    color: var(--text-color-light);
+    margin-left: 5px;
+}
+
+body.dark-mode .listing-rating .review-count {
+    color: var(--dark-text-color-light);
+}
+/* End NEW */
+
+.listing-actions {
+    margin-top: auto; /* Pushes buttons to the bottom */
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+body.dark-mode .listing-actions {
+    border-color: var(--dark-border-color);
+}
+
+.listing-actions button {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.edit-button {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+body.dark-mode .edit-button {
+    background-color: var(--dark-secondary-color);
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .edit-button:hover {
+    background-color: #4a90e2;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+body.dark-mode .delete-button {
+    background-color: #ff6b6b; /* Lighter red for dark mode */
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+body.dark-mode .delete-button:hover {
+    background-color: #ff4d4d;
+}
+
+/* For empty states */
+.listings-loading, .listings-error, .no-listings {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2em;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .listings-loading, body.dark-mode .listings-error, body.dark-mode .no-listings {
+    color: var(--dark-text-color-light);
+}
+
+.no-listings h2 {
+    color: var(--primary-color);
+}
+
+body.dark-mode .no-listings h2 {
+    color: var(--dark-primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .listings-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+        padding: 0 15px;
+    }
+    .my-listings-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
+
+/* codeZone/venderconex/frontend/src/styles/MyListingsPage.css */
+
+.my-listings-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    color: var(--text-color);
+}
+
+body.dark-mode .my-listings-container {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    color: var(--dark-text-color);
+}
+
+.my-listings-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+body.dark-mode .my-listings-container h2 {
+    color: var(--dark-primary-color);
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    justify-content: center;
+}
+
+.listing-card {
+    background-color: var(--input-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-mode .listing-card {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.listing-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode .listing-image {
+    border-color: var(--dark-border-color);
+}
+
+.listing-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.listing-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.3em;
+}
+
+body.dark-mode .listing-info h3 {
+    color: var(--dark-text-color);
+}
+
+.listing-category {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-bottom: 8px;
+}
+
+body.dark-mode .listing-category {
+    color: var(--dark-text-color-light);
+}
+
+.listing-price {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+body.dark-mode .listing-price {
+    color: var(--dark-primary-color);
+}
+
+/* Listing Rating styles */
+.listing-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.listing-rating .stars span {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 1.2em;
+    margin-right: 2px;
+}
+.listing-rating .stars span[style*="color: rgb(204, 204, 204)"] { /* For empty stars */
+    color: #ccc !important;
+}
+
+.listing-rating .rating-value {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-left: 5px;
+}
+
+body.dark-mode .listing-rating .rating-value {
+    color: var(--dark-text-color);
+}
+
+.listing-rating .review-count {
+    font-size: 0.85em;
+    color: var(--text-color-light);
+    margin-left: 5px;
+}
+
+body.dark-mode .listing-rating .review-count {
+    color: var(--dark-text-color-light);
+}
+
+.listing-actions {
+    margin-top: auto; /* Pushes buttons to the bottom */
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+body.dark-mode .listing-actions {
+    border-color: var(--dark-border-color);
+}
+
+.listing-actions button {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.edit-button {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+body.dark-mode .edit-button {
+    background-color: var(--dark-secondary-color);
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .edit-button:hover {
+    background-color: #4a90e2;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+body.dark-mode .delete-button {
+    background-color: #ff6b6b; /* Lighter red for dark mode */
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+body.dark-mode .delete-button:hover {
+    background-color: #ff4d4d;
+}
+
+/* For empty states */
+.listings-loading, .listings-error, .no-listings {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2em;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .listings-loading, body.dark-mode .listings-error, body.dark-mode .no-listings {
+    color: var(--dark-text-color-light);
+}
+
+.no-listings h2 {
+    color: var(--primary-color);
+}
+
+body.dark-mode .no-listings h2 {
+    color: var(--dark-primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .listings-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+        padding: 0 15px;
+    }
+    .my-listings-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}

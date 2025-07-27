@@ -1,0 +1,168 @@
+/* codeZone/venderconex/frontend/src/styles/AddProductPage.css */
+
+.add-product-page-container {
+    padding: 100px 20px 20px; /* Add padding-top to account for fixed Navbar */
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 30px; /* Further push down content below navbar */
+}
+
+body.dark-mode .add-product-page-container {
+    background-color: #2c2c2c;
+    color: #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.page-title {
+    font-size: 2.2em;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+body.dark-mode .page-title {
+    color: #87ceeb;
+}
+
+.page-description {
+    font-size: 1.1em;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+body.dark-mode .page-description {
+    color: #ccc;
+}
+
+.product-form-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+body.dark-mode .product-form-section {
+    background-color: #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+body.dark-mode .form-group label {
+    color: #eee;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+    background-color: #fefefe;
+    color: #333;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="number"],
+body.dark-mode .form-group textarea {
+    background-color: #4c4c4c;
+    border-color: #666;
+    color: #eee;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+body.dark-mode .form-group input[type="text"]:focus,
+body.dark-mode .form-group input[type="number"]:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #87ceeb;
+    box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.25);
+}
+
+.form-group input[type="file"] {
+    padding: 10px 0;
+}
+
+.file-hint {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+body.dark-mode .file-hint {
+    color: #bbb;
+}
+
+.submit-product-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745; /* Green for success/add */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .submit-product-button {
+    background-color: #4CAF50;
+}
+
+.submit-product-button:hover {
+    background-color: #218838;
+}
+
+body.dark-mode .submit-product-button:hover {
+    background-color: #45a049;
+}
+
+.current-listings-preview {
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    color: #666;
+    border: 1px dashed #ccc;
+}
+
+body.dark-mode .current-listings-preview {
+    background-color: #3a3a3a;
+    border-color: #666;
+    color: #aaa;
+}
+
+.current-listings-preview h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+body.dark-mode .current-listings-preview h2 {
+    color: #87ceeb;
+}

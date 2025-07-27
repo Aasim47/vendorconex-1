@@ -1,0 +1,11 @@
+/* file: src/styles/DashboardLayout.css */
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.dashboard-content {
+    flex-grow: 1; /* Allows content area to take available space below navbar */
+    padding: 20px; /* Example padding for content */
+}

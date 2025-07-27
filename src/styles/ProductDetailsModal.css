@@ -1,0 +1,231 @@
+/* codeZone/venderconex/frontend/src/styles/ProductDetailsModal.css */
+
+.product-details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other page content */
+    /* Add fade-in animation (optional) */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Class to make the overlay visible (toggled by JS) */
+.product-details-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.product-details-modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-width: 800px; /* Max width for the modal */
+    width: 90%; /* Responsive width */
+    max-height: 90vh; /* Max height to allow scrolling if content is long */
+    overflow-y: auto; /* Enable scrolling for content overflow */
+    display: flex; /* Use flexbox for image and info layout */
+    gap: 30px; /* Space between image and text */
+    /* Add slide-up animation (optional) */
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+/* Animation when modal becomes visible */
+.product-details-overlay.visible .product-details-modal-content {
+    transform: translateY(0);
+}
+
+
+/* Dark mode styles for the modal content */
+body.dark-mode .product-details-modal-content {
+    background-color: #333;
+    color: #eee;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close-details-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: #666;
+    outline: none; /* Remove focus outline */
+}
+
+body.dark-mode .close-details-btn {
+    color: #bbb;
+}
+
+.close-details-btn:hover {
+    color: #333;
+}
+
+body.dark-mode .close-details-btn:hover {
+    color: #eee;
+}
+
+.product-details-body {
+    display: flex;
+    flex-direction: row; /* Default: image and info side-by-side */
+    gap: 30px;
+    width: 100%;
+}
+
+.details-product-image {
+    width: 40%; /* Image takes 40% of the modal's body width */
+    min-width: 250px; /* Minimum width for the image */
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.details-product-info {
+    flex-grow: 1; /* Product info takes the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content and buttons */
+}
+
+.details-product-info h2 {
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+body.dark-mode .details-product-info h2 {
+    color: #eee;
+}
+
+.details-price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #28a745; /* Green for price */
+    margin-bottom: 15px;
+}
+
+body.dark-mode .details-price {
+    color: #90ee90;
+}
+
+.details-product-info p {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.details-description {
+    font-size: 1em;
+    color: #555;
+    margin-top: 15px;
+    flex-grow: 1; /* Allow description to take available space before buttons */
+}
+
+body.dark-mode .details-description {
+    color: #ccc;
+}
+
+.details-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px; /* Space above the action buttons */
+}
+
+.details-add-to-cart-btn,
+.details-buy-now-btn {
+    flex: 1; /* Make buttons take equal width */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    outline: none; /* Remove focus outline */
+}
+
+.details-add-to-cart-btn {
+    background-color: #007bff; /* Blue for Add to Cart */
+    color: white;
+}
+
+body.dark-mode .details-add-to-cart-btn {
+    background-color: #87ceeb;
+    color: #333;
+}
+
+.details-add-to-cart-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+body.dark-mode .details-add-to-cart-btn:hover {
+    background-color: #5bbde5;
+}
+
+.details-buy-now-btn {
+    background-color: #ffc107; /* Yellow for Buy Now */
+    color: #333;
+}
+
+body.dark-mode .details-buy-now-btn {
+    background-color: #ffd700; /* Gold for dark mode */
+}
+
+.details-buy-now-btn:hover {
+    background-color: #e0a800;
+    transform: translateY(-1px);
+}
+
+body.dark-mode .details-buy-now-btn:hover {
+    background-color: #ccac00;
+}
+
+
+/* Responsive adjustments for modal */
+@media (max-width: 768px) {
+    .product-details-modal-content {
+        flex-direction: column; /* Stack image and info vertically */
+        gap: 20px;
+        padding: 20px;
+        max-width: 95%;
+        max-height: 95vh; /* Adjust max height for smaller screens */
+    }
+
+    .details-product-image {
+        width: 100%; /* Image takes full width */
+        min-width: unset; /* Remove min-width constraint */
+        height: 200px; /* Adjust height */
+    }
+
+    .details-product-info h2 {
+        font-size: 1.8em;
+    }
+
+    .details-price {
+        font-size: 1.5em;
+    }
+
+    .details-actions {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .details-add-to-cart-btn,
+    .details-buy-now-btn {
+        width: 100%; /* Full width buttons */
+    }
+}

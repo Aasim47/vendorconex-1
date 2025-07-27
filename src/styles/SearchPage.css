@@ -1,0 +1,535 @@
+/* General Variables */
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #007bff; /* Blue */
+    --text-color: #333;
+    --text-color-light: #666;
+    --background-color: #f4f7f6;
+    --secondary-background-color: #ffffff;
+    --border-color: #ddd;
+    --input-background: #fdfdfd;
+    --hover-color: #e6ffe6; /* Light green for hover */
+    --box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    /* Dark Mode Variables */
+    --dark-primary-color: #66BB6A;
+    --dark-secondary-color: #64B5F6;
+    --dark-text-color: #e0e0e0;
+    --dark-text-color-light: #b0b0b0;
+    --dark-background-color: #2c2c2c;
+    --dark-secondary-background-color: #3a3a3a;
+    --dark-border-color: #555;
+    --dark-input-background: #444;
+    --dark-hover-color: #4a6a4a; /* Darker green for hover */
+}
+
+/* Base Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode Toggle */
+body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+}
+
+/* Search Page Container */
+.search-page-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Search Page Header */
+.search-page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-page-header h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Dark mode for header */
+body.dark-mode .search-page-header h2 {
+    color: var(--dark-primary-color);
+}
+
+/* Main Content Area (Sidebar + Main) */
+.search-page-content {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Filters Sidebar */
+.filters-sidebar {
+    flex: 0 0 250px; /* Fixed width sidebar */
+    background-color: var(--secondary-background-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    height: fit-content; /* Adjust height to content */
+    position: sticky; /* Sticky sidebar */
+    top: 20px; /* Distance from top when sticky */
+}
+
+body.dark-mode .filters-sidebar {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.filters-sidebar h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+body.dark-mode .filters-sidebar h3 {
+    color: var(--dark-primary-color);
+    border-color: var(--dark-border-color);
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-light);
+    font-size: 0.95em;
+}
+
+body.dark-mode .filter-group label {
+    color: var(--dark-text-color-light);
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 1em;
+    appearance: none; /* Remove default select arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C197.3l-11.4%2C11.4l-123.6%2C-123.6l-123.6%2C123.6l-11.4%2C-11.4L145.4%2C73.7L287%2C197.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+body.dark-mode .filter-group select {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+    filter: invert(1); /* Simple way to invert black SVG to white */
+}
+
+/* Apply Filters Button */
+.apply-filters-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.apply-filters-btn:hover {
+    background-color: #43a047; /* Darker green */
+}
+
+body.dark-mode .apply-filters-btn {
+    background-color: var(--dark-primary-color);
+}
+
+body.dark-mode .apply-filters-btn:hover {
+    background-color: #5cb85f;
+}
+
+
+/* Main Search Results Area */
+.search-results-main {
+    flex: 1; /* Takes remaining space */
+    padding: 0 10px;
+}
+
+/* Search Bar and Sort By Area */
+.search-and-sort-area {
+    display: flex;
+    align-items: flex-end; /* Align elements to their bottom edge */
+    gap: 20px; /* Space between search bar and sort dropdown */
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Main Search Input Box */
+.main-search-bar {
+    position: relative; /* This is CRUCIAL! It makes absolute positioning of children relative to this div */
+    flex-grow: 1; /* Allows search bar to take available space */
+    min-width: 250px; /* Ensures it doesn't get too small */
+    margin-bottom: 0; /* Override any previous margin if it was on this class */
+}
+
+.search-input {
+    width: 100%;
+    /* IMPORTANT: padding-left: 40px creates space for the icon on the left */
+    padding: 12px 15px 12px 40px; /* Top Right Bottom Left (40px on left for icon) */
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 1.1em;
+    background-color: var(--input-background);
+    color: var(--text-color);
+}
+
+body.dark-mode .search-input {
+    background-color: var(--dark-input-background);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+}
+
+/* The Search Icon (magnifying glass) */
+.search-icon {
+    position: absolute; /* Positions the icon relative to .main-search-bar */
+    left: 15px; /* Places the icon 15px from the left edge of the input box */
+    top: 50%; /* Aligns the icon to the vertical center */
+    transform: translateY(-50%); /* Fine-tunes vertical centering */
+    color: var(--secondary-color); /* Your chosen icon color */
+    font-size: 1.2em; /* Make the icon slightly larger for better visibility */
+    cursor: text; /* Optional: Changes cursor to text to match input area, or pointer if it's clickable */
+}
+
+body.dark-mode .search-icon {
+    color: var(--dark-secondary-color);
+}
+
+/* Category Chips */
+.category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.chip {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color-light);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+}
+
+.chip:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+.chip.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+body.dark-mode .chip {
+    background-color: var(--dark-secondary-background-color);
+    color: var(--dark-text-color-light);
+    border-color: var(--dark-border-color);
+}
+
+body.dark-mode .chip:hover {
+    background-color: var(--dark-hover-color);
+    color: var(--dark-primary-color);
+}
+
+body.dark-mode .chip.active {
+    background-color: var(--dark-primary-color);
+    color: white;
+    border-color: var(--dark-primary-color);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+body.dark-mode .product-card {
+    background-color: var(--dark-secondary-background-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode .product-image {
+    border-color: var(--dark-border-color);
+}
+
+.product-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+body.dark-mode .product-name {
+    color: var(--dark-text-color);
+}
+
+.product-price {
+    font-size: 1.05em;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+body.dark-mode .product-price {
+    color: var(--dark-primary-color);
+}
+
+.product-supplier, .product-distance {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .product-supplier, body.dark-mode .product-distance {
+    color: var(--dark-text-color-light);
+}
+
+.add-to-cart-btn {
+    width: calc(100% - 30px); /* Account for padding */
+    padding: 10px 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 15px 15px 15px; /* Bottom margin */
+    align-self: center; /* Center horizontally in flex column */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+body.dark-mode .add-to-cart-btn {
+    background-color: var(--dark-secondary-color);
+}
+
+body.dark-mode .add-to-cart-btn:hover {
+    background-color: #4a90e2;
+}
+
+.no-results {
+    text-align: center;
+    grid-column: 1 / -1; /* Span across all columns */
+    color: var(--text-color-light);
+    padding: 30px;
+    font-size: 1.2em;
+}
+
+body.dark-mode .no-results {
+    color: var(--dark-text-color-light);
+}
+
+/* Pagination Controls */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.pagination-button {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+.pagination-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.pagination-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+body.dark-mode .pagination-button {
+    background-color: var(--dark-secondary-background-color);
+    color: var(--dark-text-color);
+    border-color: var(--dark-border-color);
+}
+
+body.dark-mode .pagination-button.active {
+    background-color: var(--dark-primary-color);
+    color: white;
+    border-color: var(--dark-primary-color);
+}
+
+/* Custom Sort By Dropdown Styling */
+.sort-by-group {
+    display: flex; /* Make label and select inline */
+    align-items: center; /* Vertically center label and select */
+    gap: 5px; /* Small space between "Sort By" label and the dropdown text */
+    flex-shrink: 0;
+    width: auto; /* Allow width to be content-based */
+    min-width: unset; /* Remove min-width to allow shrinking if content is small */
+    margin-bottom: 0; /* Ensure no extra margin */
+    padding-right: 10px; /* Example padding to separate from search input */
+}
+
+.sort-by-group label {
+    margin-bottom: 0; /* Remove default bottom margin for labels in flex container */
+    font-weight: normal; /* Keep label text normal */
+    white-space: nowrap; /* Prevent "Sort By" label from wrapping */
+    color: var(--text-color-light); /* Make label slightly lighter */
+}
+
+.sort-by-group select {
+    border: none; /* Remove border */
+    background-color: transparent; /* Make background transparent */
+    box-shadow: none; /* Remove any shadow */
+    padding: 0 25px 0 0; /* Adjust padding: right padding for icon, no left padding */
+    color: var(--text-color); /* Ensure text color is visible */
+    font-weight: bold; /* Make the selected option stand out */
+    width: auto; /* Allow width to be content-based */
+    min-width: 80px; /* Minimum width to ensure content is visible */
+    background-position: right 0 center; /* Position arrow directly to the right of text */
+    font-size: 1em; /* Ensure consistent font size */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+body.dark-mode .sort-by-group select {
+    color: var(--dark-text-color);
+    filter: invert(1); /* Simple way to invert black SVG to white if the generic filter applies */
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .search-page-content {
+        flex-direction: column;
+    }
+    .filters-sidebar {
+        position: static; /* Remove sticky on smaller screens */
+        flex: auto; /* Allow sidebar to take full width */
+        margin-bottom: 20px;
+    }
+    .search-results-main {
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-page-container {
+        padding: 15px;
+    }
+
+    .search-page-header h2 {
+        font-size: 2em;
+    }
+
+    .search-and-sort-area {
+        flex-direction: column; /* Stack search and sort vertically */
+        align-items: stretch; /* Stretch items to full width */
+        gap: 15px;
+    }
+
+    .main-search-bar,
+    .sort-by-group {
+        width: 100%; /* Make them full width */
+        min-width: unset;
+    }
+
+    .sort-by-group select {
+        width: 100%; /* Ensure select takes full width in stacked layout */
+        padding-right: 30px; /* More padding on right for larger arrow on mobile */
+        background-position: right 10px center; /* Adjust arrow position on mobile */
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Slightly smaller cards */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .add-to-cart-btn {
+        font-size: 0.9em;
+        padding: 8px 10px;
+    }
+}

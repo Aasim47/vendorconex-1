@@ -1,0 +1,195 @@
+/* codeZone/venderconex/frontend/src/styles/OrdersPage.css */
+
+.orders-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.orders-header {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.no-orders-message {
+    text-align: center;
+    padding: 60px 20px;
+    border: 2px dashed #cccccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.no-orders-message p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.go-to-search-btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    background-color: #3498db; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.go-to-search-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.order-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out;
+    border: 1px solid #e0e0e0;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+}
+
+.order-header-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-id {
+    font-weight: 600;
+    color: #34495e;
+}
+
+.order-item-details {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.order-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+}
+
+.order-item-info {
+    flex-grow: 1;
+}
+
+.order-item-name {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.order-item-supplier,
+.order-item-price,
+.order-item-quantity {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 3px;
+}
+
+.order-total {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #27ae60; /* Green for total */
+    margin-top: 10px;
+}
+
+.order-status {
+    margin-top: auto; /* Push status to the bottom */
+    padding-top: 15px;
+    border-top: 1px dashed #e0e0e0;
+    text-align: right;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.order-status .status-label {
+    color: #666;
+    margin-right: 5px;
+}
+
+.order-status .status-value {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.order-status .status-value.pending {
+    background-color: #f39c12; /* Orange for pending */
+}
+.order-status .status-value.completed {
+    background-color: #28a745; /* Green for completed */
+}
+.order-status .status-value.cancelled {
+    background-color: #dc3545; /* Red for cancelled */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .orders-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .orders-header {
+        font-size: 2em;
+    }
+
+    .orders-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+
+    .order-item-details {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-item-image {
+        margin-bottom: 10px;
+    }
+
+    .order-item-info {
+        text-align: left; /* Align text left even when stacked */
+        width: 100%;
+    }
+}

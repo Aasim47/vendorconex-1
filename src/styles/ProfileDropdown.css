@@ -1,0 +1,188 @@
+/* frontend/src/styles/ProfileDropdown.css - ENHANCED */
+
+/* Main container for the dropdown */
+.profile-dropdown-container {
+    position: relative;
+    display: inline-block;
+    /* Ensure z-index is high enough if it overlaps other elements in the header */
+    z-index: 10; /* Important: Higher than general header elements */
+}
+
+/* The clickable trigger element (e.g., user avatar/name) */
+.profile-dropdown-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Slightly more space for visual comfort */
+    padding: 5px 10px; /* Add some padding around the trigger area */
+    border-radius: 25px; /* Make it slightly rounded */
+    transition: background-color 0.2s ease;
+}
+
+.profile-dropdown-trigger:hover {
+    background-color: #f0f2f5; /* Light background on hover for the trigger */
+}
+
+/* Placeholder for user avatar */
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* A more vibrant placeholder background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* White text for contrast */
+    font-weight: 600; /* Bolder initial */
+    font-size: 18px; /* Slightly smaller initial for better fit */
+    flex-shrink: 0; /* Prevent avatar from shrinking */
+}
+
+/* User name next to avatar */
+.profile-dropdown-trigger span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333; /* Dark text for name */
+}
+
+
+/* The dropdown content box itself */
+.profile-dropdown-content {
+    position: absolute;
+    top: calc(100% + 10px); /* Position slightly below the trigger, adjust as needed */
+    right: 0; /* Align to the right of the trigger */
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Slightly larger border-radius for softer look */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+    min-width: 250px; /* Increased width for better spacing */
+    z-index: 1000; /* Ensure it appears on top of everything */
+    padding: 10px 0; /* Vertical padding inside the dropdown */
+    transform-origin: top right;
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+
+    /* Hidden by default */
+    opacity: 0;
+    transform: scale(0.95);
+    visibility: hidden;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* State when dropdown is visible */
+.profile-dropdown-content.show {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* User Info Section within Dropdown */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px 15px 20px; /* Adjusted padding */
+    border-bottom: 1px solid #eee; /* Subtle separator */
+    margin-bottom: 10px; /* Space below separator */
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 19px; /* Slightly larger name */
+    color: #222; /* Darker name color */
+    font-weight: 600;
+}
+
+.profile-info p {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Individual list items (links) in the dropdown */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Increased space between icon and text */
+    padding: 12px 20px; /* Generous padding for easier clicking */
+    color: #444; /* Darker text for items */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-left: 3px solid transparent; /* For active/hover highlight */
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5; /* Light grey background on hover */
+    color: #4CAF50; /* Green text on hover */
+    border-left-color: #4CAF50; /* Green line on the left on hover */
+}
+
+/* Styles for the SVG icons within dropdown items */
+.dropdown-item svg {
+    width: 20px;
+    height: 20px;
+    fill: #666; /* Default icon color */
+    transition: fill 0.2s ease;
+}
+
+.dropdown-item:hover svg {
+    fill: #4CAF50; /* Green icon on hover */
+}
+
+/* Dark Mode Toggle specific styles */
+.dropdown-item.dark-mode-toggle {
+    justify-content: space-between;
+    padding-right: 20px; /* Ensure space for checkbox */
+    padding-left: 20px;
+}
+
+.dark-mode-toggle input[type="checkbox"] {
+    appearance: none; /* Hide default checkbox */
+    width: 38px; /* Width of the custom toggle */
+    height: 20px; /* Height of the custom toggle */
+    background-color: #ccc; /* Grey background for off state */
+    border-radius: 10px; /* Rounded corners for toggle */
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dark-mode-toggle input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px; /* Size of the 'thumb' */
+    height: 16px;
+    background-color: white; /* White thumb */
+    border-radius: 50%; /* Make it round */
+    transition: transform 0.2s ease;
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked {
+    background-color: #4CAF50; /* Green background for on state */
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked::before {
+    transform: translateX(18px); /* Move thumb to the right when checked */
+}
+
+
+/* Logout button specific styles */
+.dropdown-item.logout-button {
+    border-top: 1px solid #eee; /* Separator above logout */
+    margin-top: 10px; /* Space above logout */
+    color: #e74c3c; /* Red color for logout text */
+    font-weight: 600; /* Bolder text for logout */
+}
+
+.dropdown-item.logout-button svg {
+    fill: #e74c3c; /* Red icon for logout */
+}
+
+.dropdown-item.logout-button:hover {
+    background-color: #ffe6e6; /* Very light red background on hover */
+    color: #c0392b; /* Slightly darker red on hover */
+    border-left-color: #e74c3c; /* Red line on the left on hover */
+}

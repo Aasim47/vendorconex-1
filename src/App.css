@@ -1,0 +1,1805 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a; /* Dark background */
+    color: #f4f7f6; /* Light text */
+}
+
+/* --- Login Page Specific Styles --- */
+
+.login-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff; /* White background for the main login card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px; /* Max width for the entire login container */
+    overflow: hidden; /* To contain header/footer elements */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.login-page-container.dark-mode {
+    background-color: #2b2b2b; /* Darker background for the main login card in dark mode */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff; /* White header background */
+    border-bottom: 1px solid #eee;
+}
+
+.login-page-container.dark-mode .login-header {
+    background-color: #333; /* Darker header background in dark mode */
+    border-bottom-color: #444;
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333; /* Dark text for logo */
+}
+
+.login-page-container.dark-mode .login-logo {
+    color: #f4f7f6; /* Light text for logo in dark mode */
+}
+
+.logo-icon {
+    background-color: #007bff; /* Blue background for 'M' icon */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.help-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+    transition: background-color 0.2s;
+}
+
+.login-page-container.dark-mode .help-button {
+    background-color: #444;
+    border-color: #555;
+    color: #eee;
+}
+
+.help-button:hover {
+    background-color: #e0e0e0;
+}
+
+.login-page-container.dark-mode .help-button:hover {
+    background-color: #555;
+}
+
+.login-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.login-main-content h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.login-page-container.dark-mode .login-main-content h2 {
+    color: #f4f7f6;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.login-page-container.dark-mode .auth-tabs {
+    border-bottom-color: #444;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    text-decoration: none; /* For Link component */
+}
+
+.login-page-container.dark-mode .tab-button {
+    color: #bbb;
+}
+
+.tab-button.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+}
+
+.login-page-container.dark-mode .tab-button.active {
+    color: #6daafc; /* Lighter blue for dark mode active tab */
+    border-bottom-color: #6daafc;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group input {
+    width: calc(100% - 40px); /* Adjust width for icon */
+    padding: 12px 15px 12px 40px; /* Left padding for icon */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.login-page-container.dark-mode .input-group input {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #f4f7f6;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.login-page-container.dark-mode .input-group input::placeholder {
+    color: #bbb;
+}
+
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.login-page-container.dark-mode .input-icon {
+    color: #aaa;
+}
+
+.detect-location-button,
+.create-account-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.detect-location-button {
+    background-color: #e0e9f3; /* Light blue/gray */
+    color: #007bff;
+    font-weight: bold;
+}
+
+.login-page-container.dark-mode .detect-location-button {
+    background-color: #4a4a4a;
+    color: #88bbff;
+}
+
+.detect-location-button:hover {
+    background-color: #d0e0ed;
+}
+
+.login-page-container.dark-mode .detect-location-button:hover {
+    background-color: #5a5a5a;
+}
+
+.create-account-button {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    font-weight: bold;
+}
+
+.create-account-button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.login-page-container.dark-mode .forgot-password-link {
+    color: #6daafc;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Ensure other page content doesn't overlap or interfere with fixed elements */
+.content-area {
+    margin-top: 60px; /* Adjust based on Navbar height */
+    padding: 20px;
+}
+
+/* Basic Navbar styles if not already defined for proper placement */
+.navbar {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Keep navbar at top */
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.dark-mode .navbar {
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.dark-mode .navbar-logo {
+    color: #f4f7f6;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.dark-mode .nav-link {
+    color: #ccc;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    background-color: #e9ecef;
+}
+
+.dark-mode .nav-link:hover {
+    color: #6daafc;
+    background-color: #444;
+}
+
+.login-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a; /* Dark background */
+    color: #f4f7f6; /* Light text */
+}
+
+/* --- Login/Signup Page Container Styles (Shared) --- */
+.login-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff; /* White background for the main card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px; /* Max width for the entire container */
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.login-page-container.dark-mode {
+    background-color: #2b2b2b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+}
+
+.login-page-container.dark-mode .login-header {
+    background-color: #333;
+    border-bottom-color: #444;
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333;
+}
+
+.login-page-container.dark-mode .login-logo {
+    color: #f4f7f6;
+}
+
+.logo-icon {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.help-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+    transition: background-color 0.2s;
+}
+
+.login-page-container.dark-mode .help-button {
+    background-color: #444;
+    border-color: #555;
+    color: #eee;
+}
+
+.help-button:hover {
+    background-color: #e0e0e0;
+}
+
+.login-page-container.dark-mode .help-button:hover {
+    background-color: #555;
+}
+
+.login-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.login-main-content h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.login-page-container.dark-mode .login-main-content h2 {
+    color: #f4f7f6;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.login-page-container.dark-mode .auth-tabs {
+    border-bottom-color: #444;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    text-decoration: none; /* For Link component */
+}
+
+.login-page-container.dark-mode .tab-button {
+    color: #bbb;
+}
+
+.tab-button.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+}
+
+.login-page-container.dark-mode .tab-button.active {
+    color: #6daafc; /* Lighter blue for dark mode active tab */
+    border-bottom-color: #6daafc;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group input {
+    width: calc(100% - 40px); /* Adjust width for icon */
+    padding: 12px 15px 12px 40px; /* Left padding for icon */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.login-page-container.dark-mode .input-group input {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #f4f7f6;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.login-page-container.dark-mode .input-group input::placeholder {
+    color: #bbb;
+}
+
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.login-page-container.dark-mode .input-icon {
+    color: #aaa;
+}
+
+/* New Shared Button Styles */
+.primary-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.login-button-submit {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+}
+
+.login-button-submit:hover {
+    background-color: #0056b3;
+}
+
+.create-account-button { /* Reused for Signup primary button */
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.create-account-button:hover {
+    background-color: #0056b3;
+}
+
+
+.or-separator {
+    text-align: center;
+    margin: 15px 0;
+    color: #888;
+    font-size: 0.9em;
+    position: relative;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #eee;
+}
+
+.login-page-container.dark-mode .or-separator::before,
+.login-page-container.dark-mode .or-separator::after {
+    background-color: #555;
+}
+
+.or-separator::before {
+    left: 0;
+}
+
+.or-separator::after {
+    right: 0;
+}
+
+.google-login-button {
+    background-color: #db4437; /* Google red */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.google-login-button:hover {
+    background-color: #c23321;
+}
+
+.google-icon {
+    font-size: 1.2em;
+}
+
+.forgot-password-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.login-page-container.dark-mode .forgot-password-link {
+    color: #6daafc;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Signup Page Specific Styles (within App.css) */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.95em;
+    color: #555;
+    align-self: flex-start; /* Align checkbox to the left within the form */
+    margin-left: calc(50% - 200px); /* Center with form, then shift left by half form width */
+    max-width: 400px; /* Match form max-width */
+    width: 100%;
+}
+
+.login-page-container.dark-mode .terms-checkbox {
+    color: #bbb;
+}
+
+.terms-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    min-width: 16px; /* Ensure checkbox is visible */
+    min-height: 16px; /* Ensure checkbox is visible */
+    accent-color: #007bff; /* Custom color for checkbox */
+    cursor: pointer;
+}
+
+.terms-checkbox label {
+    display: flex; /* Allow content inside label to flex */
+    align-items: center;
+}
+
+.terms-checkbox .terms-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 5px; /* Add some space if needed */
+}
+
+.login-page-container.dark-mode .terms-checkbox .terms-link {
+    color: #6daafc;
+}
+
+.terms-checkbox .terms-link:hover {
+    text-decoration: underline;
+}
+
+.already-have-account {
+    font-size: 0.95em;
+    color: #555;
+    margin-top: 20px;
+}
+
+.login-page-container.dark-mode .already-have-account {
+    color: #bbb;
+}
+
+/* Ensure other page content doesn't overlap or interfere with fixed elements */
+.content-area {
+    margin-top: 60px; /* Adjust based on Navbar height */
+    padding: 20px;
+}
+
+/* Basic Navbar styles if not already defined for proper placement */
+.navbar {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Keep navbar at top */
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.dark-mode .navbar {
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.dark-mode .navbar-logo {
+    color: #f4f7f6;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.dark-mode .nav-link {
+    color: #ccc;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    background-color: #e9ecef;
+}
+
+.dark-mode .nav-link:hover {
+    color: #6daafc;
+    background-color: #444;
+}
+
+.login-button { /* This rule might be redundant now, but keep if other parts of app use it. */
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* codeZone/venderconex/frontend/src/App.css */
+
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; /* Will be overridden by padding-top in Navbar.css for fixed navbar */
+    background-color: #f4f7f6; /* Light background */
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a; /* Dark background */
+    color: #f4f7f6; /* Light text */
+}
+
+/* Adjust main content padding to account for fixed navbar */
+body {
+    padding-top: 60px; /* Adjust this value based on your actual navbar height in Navbar.css */
+}
+
+/* --- Login/Signup Page Container Styles (Shared) --- */
+.login-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff; /* White background for the main card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px; /* Max width for the entire container */
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.login-page-container.dark-mode {
+    background-color: #2b2b2b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+}
+
+.login-page-container.dark-mode .login-header {
+    background-color: #333;
+    border-bottom-color: #444;
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333;
+}
+
+.login-page-container.dark-mode .login-logo {
+    color: #f4f7f6;
+}
+
+.logo-icon {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.help-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+    transition: background-color 0.2s;
+}
+
+.login-page-container.dark-mode .help-button {
+    background-color: #444;
+    border-color: #555;
+    color: #eee;
+}
+
+.help-button:hover {
+    background-color: #e0e0e0;
+}
+
+.login-page-container.dark-mode .help-button:hover {
+    background-color: #555;
+}
+
+.login-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.login-main-content h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.login-page-container.dark-mode .login-main-content h2 {
+    color: #f4f7f6;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.login-page-container.dark-mode .auth-tabs {
+    border-bottom-color: #444;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    text-decoration: none; /* For Link component */
+}
+
+.login-page-container.dark-mode .tab-button {
+    color: #bbb;
+}
+
+.tab-button.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+}
+
+.login-page-container.dark-mode .tab-button.active {
+    color: #6daafc; /* Lighter blue for dark mode active tab */
+    border-bottom-color: #6daafc;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group input {
+    width: calc(100% - 40px); /* Adjust width for icon */
+    padding: 12px 15px 12px 40px; /* Left padding for icon */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.login-page-container.dark-mode .input-group input {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #f4f7f6;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.login-page-container.dark-mode .input-group input::placeholder {
+    color: #bbb;
+}
+
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.login-page-container.dark-mode .input-icon {
+    color: #aaa;
+}
+
+/* New Shared Button Styles */
+.primary-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.login-button-submit {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+}
+
+.login-button-submit:hover {
+    background-color: #0056b3;
+}
+
+.create-account-button { /* Reused for Signup primary button */
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.create-account-button:hover {
+    background-color: #0056b3;
+}
+
+
+.or-separator {
+    text-align: center;
+    margin: 15px 0;
+    color: #888;
+    font-size: 0.9em;
+    position: relative;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #eee;
+}
+
+.login-page-container.dark-mode .or-separator::before,
+.login-page-container.dark-mode .or-separator::after {
+    background-color: #555;
+}
+
+.or-separator::before {
+    left: 0;
+}
+
+.or-separator::after {
+    right: 0;
+}
+
+.google-login-button {
+    background-color: #db4437; /* Google red */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.google-login-button:hover {
+    background-color: #c23321;
+}
+
+.google-icon {
+    font-size: 1.2em;
+}
+
+.forgot-password-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.login-page-container.dark-mode .forgot-password-link {
+    color: #6daafc;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Signup Page Specific Styles (within App.css) */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.95em;
+    color: #555;
+    align-self: flex-start; /* Align checkbox to the left within the form */
+    margin-left: calc(50% - 200px); /* Center with form, then shift left by half form width */
+    max-width: 400px; /* Match form max-width */
+    width: 100%;
+}
+
+.login-page-container.dark-mode .terms-checkbox {
+    color: #bbb;
+}
+
+.terms-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    min-width: 16px; /* Ensure checkbox is visible */
+    min-height: 16px; /* Ensure checkbox is visible */
+    accent-color: #007bff; /* Custom color for checkbox */
+    cursor: pointer;
+}
+
+.terms-checkbox label {
+    display: flex; /* Allow content inside label to flex */
+    align-items: center;
+}
+
+.terms-checkbox .terms-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 5px; /* Add some space if needed */
+}
+
+.login-page-container.dark-mode .terms-checkbox .terms-link {
+    color: #6daafc;
+}
+
+.terms-checkbox .terms-link:hover {
+    text-decoration: underline;
+}
+
+.already-have-account {
+    font-size: 0.95em;
+    color: #555;
+    margin-top: 20px;
+}
+
+.login-page-container.dark-mode .already-have-account {
+    color: #bbb;
+}
+
+/* Ensure other page content doesn't overlap or interfere with fixed elements */
+.content-area {
+    margin-top: 60px; /* Adjust based on Navbar height */
+    padding: 20px;
+}
+
+/* codeZone/venderconex/frontend/src/App.css */
+
+/* --- General App Styles (Adjust based on your project's base styles) --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 60px; /* Adjust based on your Navbar height */
+    background-color: #f4f7f6; /* Default light background */
+    color: #333; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #2b2b2b; /* Dark mode background */
+    color: #f4f7f6; /* Dark mode text color */
+}
+
+/* Base styles for containers/pages */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* --- Navbar.css Integration (Styles for Navbar component) --- */
+/* You would typically have these in Navbar.css, but if combined, they go here */
+
+/* --- General Navbar Container and Layout --- */
+.navbar-container {
+    display: flex;
+    /* Use space-between to push left and right groups to ends,
+        and center-section-rect will then be aligned centrally with margin: auto */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Light background for default mode */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+/* --- Left Group: Back Arrow, Brand, AND Mode Toggle --- */
+.navbar-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between back arrow, brand, and toggle */
+}
+
+.back-arrow-button {
+    background: none;
+    border: none;
+    color: #333; /* Default icon color */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em; /* Adjust icon size */
+    transition: color 0.2s ease;
+}
+
+.back-arrow-button:hover {
+    color: #007bff; /* Primary color on hover */
+}
+
+.navbar-brand a {
+    font-weight: bold;
+    font-size: 24px;
+    color: #007bff; /* Primary brand color */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navbar-brand a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* --- Mode Toggle Buttons (Adjusted Size) --- */
+.navbar-mode-toggle {
+    display: flex;
+    border: 1px solid #007bff; /* Border for the toggle group */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures rounded corners apply to buttons */
+    /* MODIFIED: Make the entire toggle group a little smaller */
+    transform: scale(0.85); /* Reduce overall size slightly */
+    transform-origin: left center; /* Scale from the left edge */
+}
+
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    /* MODIFIED: Making padding symmetrical to create a more square appearance */
+    padding: 8px 8px; /* Slightly reduced padding for a smaller square look */
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller font size */
+    color: #007bff; /* Text color for inactive button */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-button:first-child {
+    border-right: 1px solid #007bff; /* Separator between buttons */
+}
+
+.toggle-button.active {
+    background-color: #007bff; /* Active button background */
+    color: white; /* Active button text color */
+}
+
+/* --- Center Section: Search/Add Products (Prominent and Centered) --- */
+.navbar-center-section-rect {
+    /* MODIFIED: Flex-grow removed, using auto margins for centering */
+    /* flex-grow: 1; */
+    max-width: 600px; /* Limit width for larger screens */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    position: relative; /* For dropdown positioning */
+    display: flex;
+    align-items: center; /* Vertically align items */
+    border: 1px solid #ccc; /* Rectangular border */
+    border-radius: 8px; /* Slightly rounded corners for a modern rectangle */
+    overflow: hidden; /* Ensures contents don't bleed out of rounded corners */
+    background-color: #f8f9fa; /* Light background for the search/add area */
+    margin: 0 auto; /* This centers the element within its flex container */
+}
+
+.navbar-search-box-with-button {
+    display: flex;
+    width: 100%;
+}
+
+.search-input-navbar {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none; /* Remove individual input border */
+    outline: none;
+    font-size: 16px;
+    background-color: transparent; /* Inherit from parent */
+    color: #333;
+}
+
+.search-button-inside-box {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.search-button-inside-box:hover {
+    background-color: #0056b3;
+}
+
+.search-recommendations-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the search box */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none; /* No top border, as it connects to search box */
+    border-radius: 0 0 8px 8px; /* Rounded only at bottom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.recommendation-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.recommendation-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* ADD PRODUCTS BUTTON STYLING (for supplier mode) */
+.add-products-button {
+    background-color: #28a745; /* Green color for add action */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Slightly more padding for a button */
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Make it fill the rectangular area */
+    text-align: center;
+    transition: background-color 0.2s ease;
+    border-radius: 7px; /* Matches the parent's border-radius visually */
+}
+
+.add-products-button:hover {
+    background-color: #218838;
+}
+
+/* --- Right Group: Icons & Profile --- */
+.navbar-right-group {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between items */
+}
+
+.navbar-home-button {
+    display: flex;
+    align-items: center;
+    /* Removed gap: 5px to make it icon-only */
+    color: #333;
+    text-decoration: none;
+    /* Removed font-size: 16px to allow icon's intrinsic size or specific icon styling to take precedence */
+    transition: color 0.2s ease;
+}
+
+.navbar-home-button:hover {
+    color: #007bff;
+}
+
+.navbar-icon-button {
+    background: none;
+    border: none;
+    color: #333; /* Default icon color */
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    position: relative; /* For notification dot */
+    transition: color 0.2s ease;
+}
+
+.navbar-icon-button:hover {
+    color: #007bff;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: #28a745; /* Green dot */
+    border-radius: 50%;
+    border: 1px solid #ffffff; /* Border to stand out against Navbar background */
+}
+
+.profile-avatar-container {
+    position: relative;
+    cursor: pointer;
+}
+
+/* MODIFIED: Make user avatar circular */
+.profile-pic-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Light border */
+    transition: border-color 0.2s ease;
+}
+
+.profile-avatar-container:hover .profile-pic-icon {
+    border-color: #007bff;
+}
+
+.profile-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    margin-top: 10px; /* Space below avatar */
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+/* Ensure profile pic in dropdown is also circular */
+.profile-dropdown-header .profile-pic-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Ensure circular in dropdown header too */
+}
+
+.profile-text-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.dropdown-item svg {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #dc3545; /* Red for logout */
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #f8d7da; /* Light red background on hover */
+    color: #c82333;
+}
+
+/* --- Authentication Buttons (Login/Signup) --- */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .navbar-container {
+        /* On smaller screens, allow search to take full width and wrap */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .navbar-left-group,
+    .navbar-right-group,
+    .navbar-center-section-rect {
+        width: 100%; /* Occupy full width */
+        justify-content: center; /* Center content */
+        margin-bottom: 10px; /* Spacing between wrapped sections */
+    }
+    .navbar-left-group {
+        /* Reset gap for proper wrapping on small screens */
+        gap: 10px; /* Adjust as needed */
+    }
+    .navbar-mode-toggle {
+        transform: scale(1); /* Reset scale on small screens if desired */
+        margin-left: 0; /* Remove margin from larger screens */
+        /* Potentially adjust padding here for very small screens if needed */
+        margin-top: 10px; /* Space it from brand */
+    }
+    .navbar-brand {
+        margin-right: 0; /* Remove margin from larger screens */
+    }
+    .navbar-center-section-rect {
+        margin-top: 10px; /* Space from top elements */
+        max-width: 100%; /* Allow full width */
+    }
+    .profile-dropdown-menu {
+        left: 50%; /* Center dropdown relative to parent */
+        transform: translateX(-50%);
+        right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Further adjustments for smaller tablets/large phones */
+    .navbar-brand a {
+        font-size: 20px;
+    }
+    .toggle-button {
+        font-size: 13px; /* Smaller font on small screens */
+        padding: 6px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for mobile phones */
+    .search-input-navbar,
+    .add-products-button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .navbar-button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+/* --- Chatbot Widget Styles --- */
+.chatbot-widget-container {
+    position: fixed;
+    bottom: 30px; /* Adjust as needed */
+    right: 30px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it's on top of most content */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align chat window to the right */
+}
+
+.chatbot-toggle-button {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular shape */
+    width: 60px; /* Size of the button */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.chatbot-toggle-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.chatbot-window {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 350px; /* Width of the chat window */
+    height: 450px; /* Height of the chat window */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* Space between window and toggle button */
+    overflow: hidden; /* Ensure content stays within rounded corners */
+    border: 1px solid #ddd;
+}
+
+/* Dark mode for chatbot window */
+body.dark-mode .chatbot-window {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #f4f7f6;
+}
+
+.chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+body.dark-mode .chatbot-header {
+    background-color: #6daafc;
+    color: #2b2b2b;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.chatbot-close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode .chatbot-close-button {
+    color: #2b2b2b;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto; /* Make messages scrollable */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f9f9f9;
+}
+
+body.dark-mode .chat-messages {
+    background-color: #2b2b2b;
+}
+
+.chat-welcome-message {
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    align-self: flex-start;
+    max-width: 80%;
+    color: #333;
+}
+
+body.dark-mode .chat-welcome-message {
+    background-color: #555;
+    color: #f4f7f6;
+}
+
+
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word; /* Ensure long words break */
+    font-size: 0.95em;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end; /* Align user messages to the right */
+    border-bottom-right-radius: 2px; /* Slight corner adjustment */
+}
+
+.model-message {
+    background-color: #e0e0e0;
+    color: #333;
+    align-self: flex-start; /* Align model messages to the left */
+    border-bottom-left-radius: 2px; /* Slight corner adjustment */
+}
+
+body.dark-mode .model-message {
+    background-color: #555;
+    color: #f4f7f6;
+}
+
+.loading-message span {
+    display: inline-block;
+    animation: blink 1s infinite steps(1, start);
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    background-color: #ffffff;
+}
+
+body.dark-mode .chat-input-area {
+    border-top-color: #555;
+    background-color: #3a3a3a;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 1em;
+    outline: none;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.dark-mode .chat-input-area input {
+    background-color: #4a4a4a;
+    border-color: #666;
+    color: #f4f7f6;
+}
+
+.chat-input-area input::placeholder {
+    color: #aaa;
+}
+
+body.dark-mode .chat-input-area input::placeholder {
+    color: #bbb;
+}
+
+.chat-input-area button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input-area button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.chat-input-area button:disabled {
+    background-color: #a0c8ff;
+    cursor: not-allowed;
+}
+
+body.dark-mode .chat-input-area button:disabled {
+    background-color: #8dafe2;
+}
