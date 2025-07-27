@@ -1,21 +1,22 @@
-// File: codeZone/vendorconex/frontend/src/pages/AuthPage.jsx
+// File: codeZone/venderconex/frontend/src/pages/AuthPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// Ensure this path is correct and authService has login/signup methods.
+// NOTE: authService is now primarily used within AuthContext.js
+// So, we don't *strictly* need it here if AuthContext handles all API calls,
+// but it doesn't hurt to keep it if there's other direct API interaction.
+// For now, let's remove it from here if AuthContext is the sole API caller for auth
+// import { authService } from '../services/api'; 
+
+import { AuthContext } from '../context/AuthContext'; // Import AuthContext
 
 // Import the CSS file for styling (ensure Auth.css is in src/styles)
-import '../styles/Auth.css';
+import '../styles/Auth.css'; // Make sure Auth.css exists and is correctly styled
 
 // SVG components defined directly in this file for simplicity
 const LocalSupplyLogo = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        {/*
-          TO CHANGE THE LOGO:
-          Replace the 'd' attribute value in the <path> below with the SVG path data
-          of your desired "VendorConex" logo.
-          Example: <path d="M your_new_svg_path_data_here Z"/>
-          You might also need to adjust viewBox, width, height for proper sizing.
-        */}
         <path d="M3 3h18v18H3zM12 8v8M8 12h8"/> {/* Current placeholder icon */}
     </svg>
 );
@@ -46,56 +47,45 @@ function AuthPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [location, setLocation] = useState(''); // This state will eventually be sent to backend or handled by SetLocationPage
-    const navigate = useNavigate(); // Hook for navigation
+    const [location, setLocation] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-    const handleSubmit = async (e) => { // Added async for potential API calls
+    // Correctly get login and signup from AuthContext
+    const { login: authContextLogin, signup: authContextSignup } = useContext(AuthContext);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', { email, password, name, location, isSignUp });
+        setError(''); // Clear previous errors
+        setLoading(true); // Set loading true during API call
 
-        // Placeholder for API call
         try {
-            const endpoint = isSignUp ? 'http://localhost:5000/api/signup' : 'http://localhost:5000/api/login'; // Replace with your backend endpoints
-            const method = 'POST';
-            const body = isSignUp ? { email, password, name, location } : { email, password };
-
-            const response = await fetch(endpoint, {
-                method: method,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Success:', data);
-                // On successful login/signup, navigate to /set-location as per flow
-                navigate('/set-location');
+            if (isSignUp) {
+                await authContextSignup(name, email, password, location);
+                alert('Account created successfully! Please log in.'); // SUCCESS ALERT
+                navigate('/login'); 
             } else {
-                const errorData = await response.json();
-                console.error('Error:', errorData.message);
-                alert(`Error: ${errorData.message || 'Something went wrong!'}`); // Display error to user
+                await authContextLogin(email, password);
+                alert('Logged in successfully!');
+                navigate('/set-location'); // Navigate to /set-location on successful login
             }
-        } catch (error) {
-            console.error('Network error:', error);
-            alert('Network error. Please try again.');
+
+        } catch (err) {
+            console.error('Authentication error:', err.response?.data || err.message);
+            setError(err.response?.data?.message || 'Authentication failed. Please try again.');
+        } finally {
+            setLoading(false); // Set loading false after API call completes
         }
     };
 
     const handleDetectLocation = () => {
-        // Navigate to the SetLocationPage (UI_20250726 (1).pdf, page 2)
-        // Note: The actual location detection logic would be on SetLocationPage.
-        // This button simply takes the user to the next step.
         navigate('/set-location');
     };
 
     return (
-        // Outer wrapper mimicking the design's background and structure
-        // Using semantic class names for easier CSS management
         <div className="auth-main-wrapper">
             <div className="layout-container">
-                {/* Header: VendorConex Brand and Help Button */}
                 <header className="app-header">
                     <div className="header-brand">
                         <LocalSupplyLogo />
@@ -106,32 +96,32 @@ function AuthPage() {
                     </button>
                 </header>
 
-                {/* Main Content Area */}
                 <div className="main-content-area">
                     <div className="auth-content-card-wrapper">
                         <h2 className="welcome-heading">Welcome to VendorConex</h2>
 
-                        {/* Login / Sign Up Tabs */}
                         <div className="tabs-wrapper">
                             <div className="auth-tabs">
                                 <button
+                                    // FIX: Use backticks for template literal
                                     className={`auth-tab-button ${!isSignUp ? 'active' : ''}`}
-                                    onClick={() => setIsSignUp(false)}
+                                    onClick={() => { setIsSignUp(false); setError(''); }}
                                 >
                                     <p className="auth-tab-text">Login</p>
                                 </button>
                                 <button
+                                    // FIX: Use backticks for template literal
                                     className={`auth-tab-button ${isSignUp ? 'active' : ''}`}
-                                    onClick={() => setIsSignUp(true)}
+                                    onClick={() => { setIsSignUp(true); setError(''); }}
                                 >
                                     <p className="auth-tab-text">Sign Up</p>
                                 </button>
                             </div>
                         </div>
 
-                        {/* Form Fields */}
+                        {error && <p className="error-message">{error}</p>}
+
                         <form onSubmit={handleSubmit}>
-                            {/* Email Input */}
                             <div className="form-field-wrapper">
                                 <label className="input-label-container">
                                     <div className="input-field-group">
@@ -149,7 +139,6 @@ function AuthPage() {
                                 </label>
                             </div>
 
-                            {/* Password Input */}
                             <div className="form-field-wrapper">
                                 <label className="input-label-container">
                                     <div className="input-field-group">
@@ -168,7 +157,6 @@ function AuthPage() {
                                 </label>
                             </div>
 
-                            {/* Name Input (Sign Up Only) */}
                             {isSignUp && (
                                 <div className="form-field-wrapper">
                                     <label className="input-label-container">
@@ -188,7 +176,6 @@ function AuthPage() {
                                 </div>
                             )}
 
-                            {/* Location Section (Sign Up Only) */}
                             {isSignUp && (
                                 <>
                                     <h3 className="location-heading">Location</h3>
@@ -220,18 +207,19 @@ function AuthPage() {
                                 </>
                             )}
 
-                            {/* Submit Button */}
                             <div className="button-wrapper">
                                 <button
                                     type="submit"
                                     className="primary-action-button"
+                                    disabled={loading}
                                 >
-                                    <span className="truncate-text">{isSignUp ? 'Create Account' : 'Sign In'}</span>
+                                    <span className="truncate-text">
+                                        {loading ? (isSignUp ? 'Creating Account...' : 'Signing In...') : (isSignUp ? 'Create Account' : 'Sign In')}
+                                    </span>
                                 </button>
                             </div>
                         </form>
 
-                        {/* Forgot Password Link (Login Only) */}
                         {!isSignUp && (
                             <p className="forgot-password-link">
                                 <Link to="/forgot-password">Forgot Password?</Link>

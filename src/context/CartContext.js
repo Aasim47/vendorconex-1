@@ -47,6 +47,7 @@ export const CartProvider = ({ children }) => {
         }
         try {
             const response = await cartService.addToCart(productId, quantity);
+            
             setCart(response.cart); // Backend returns updated cart in 'cart' field
             alert('Product added to cart!'); // Success feedback
             return true;

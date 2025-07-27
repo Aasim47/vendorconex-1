@@ -1,23 +1,43 @@
 // codeZone/venderconex/frontend/src/pages/LoginPage.jsx
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaEnvelope, FaLock, FaGoogle } from 'react-icons/fa'; // Removed FaUser, FaMapMarkerAlt
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaEnvelope, FaLock } from 'react-icons/fa'; // <--- MODIFIED: Removed FaGoogle here
+import { AuthContext } from '../context/AuthContext';
 
-import '../App.css'; // Import your main CSS for styles like .dark-mode
+import '../App.css';
 
 const LoginPage = ({ isDarkMode }) => {
-    // Function to handle login (placeholder)
-    const handleLogin = (event) => {
-        event.preventDefault(); // Prevent default form submission
-        alert('Login functionality coming soon!');
-        // Here you would typically handle authentication logic
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+    const { login: authContextLogin } = useContext(AuthContext);
+
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        setError('');
+        setLoading(true);
+
+        try {
+            await authContextLogin(email, password);
+            alert('Logged in successfully!');
+            navigate('/set-location');
+
+        } catch (err) {
+            console.error('Login error:', err.response?.data || err.message);
+            setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+        } finally {
+            setLoading(false);
+        }
     };
 
-    // Function to handle Google login (placeholder)
+    // Google login placeholder function remains, but the button/icon is not rendered
     const handleGoogleLogin = () => {
         alert('Google Login functionality coming soon!');
-        // Here you would typically integrate with Google OAuth
     };
 
     return (
@@ -37,24 +57,44 @@ const LoginPage = ({ isDarkMode }) => {
                     <Link to="/signup" className="tab-button">Sign Up</Link>
                 </div>
 
+                {error && <p className="error-message" style={{ color: 'red', textAlign: 'center', marginBottom: '10px' }}>{error}</p>}
+
                 <form className="login-form" onSubmit={handleLogin}>
                     <div className="input-group">
-                        <input type="text" placeholder="Email or Phone Number" /> {/* Changed placeholder */}
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            disabled={loading}
+                        />
                         <FaEnvelope className="input-icon" />
                     </div>
                     <div className="input-group">
-                        <input type="password" placeholder="Password" />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            disabled={loading}
+                        />
                         <FaLock className="input-icon" />
                     </div>
 
-                    <button type="submit" className="primary-button login-button-submit">
-                        Login
+                    <button type="submit" className="primary-button login-button-submit" disabled={loading}>
+                        {loading ? 'Logging In...' : 'Login'}
                     </button>
 
+                    {/*
+                        NOTE: The Google login button and its icon (FaGoogle) are commented out
+                        or removed from the JSX below.
+                        If you add FaGoogle back to the JSX, you MUST uncomment it in the import statement above.
+                    */}
                     <div className="or-separator">OR</div>
-
-                    <button type="button" className="google-login-button" onClick={handleGoogleLogin}>
-                        <FaGoogle className="google-icon" /> Login with Google
+                    <button type="button" className="google-login-button" onClick={handleGoogleLogin} disabled={loading}>
+                        {/* <FaGoogle className="google-icon" /> */} Login with Google
                     </button>
                 </form>
 

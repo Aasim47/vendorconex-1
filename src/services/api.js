@@ -6,8 +6,7 @@ import axios from 'axios';
 // If you are using Create React App and have a .env file, you can set REACT_APP_BACKEND_URL there.
 // For example, in frontend/.env: REACT_APP_BACKEND_URL=http://192.168.241.198:5000/api
 // If not using .env or for quick testing, hardcode it directly here.
-const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://192.168.241.198:5000/api'; // <--- UPDATED THIS LINE
-
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://192.168.241.198:5000';
 const api = axios.create({
     baseURL: API_BASE_URL,
     headers: {
@@ -46,8 +45,8 @@ api.interceptors.response.use(
 // --- Exported API Services ---
 
 export const authService = {
-    login: (email, password) => api.post('/auth/login', { email, password }),
-    signup: (name, email, password, location) => api.post('/auth/signup', { name, email, password, location }),
+    login: (email, password) => api.post('api/auth/login', { email, password }),
+    signup: (name, email, password, location) => api.post('api/auth/signup', { name, email, password, location }),
     getProfile: () => api.get('/users/profile'),
     updateProfile: (profileData) => api.put('/users/profile', profileData),
 };
@@ -75,7 +74,7 @@ export const chatService = {
 
 export const cartService = {
     getCart: () => api.get('/cart'),
-    addToCart: (productId, quantity) => api.post('/cart', { productId, quantity }),
+    addToCart: (productId, quantity) => api.post('api/cart', { productId, quantity }),
     updateCartItemQuantity: (productId, quantity) => api.put(`/cart/item/${productId}`, { quantity }),
     removeCartItem: (productId) => api.delete(`/cart/item/${productId}`),
     checkoutCart: () => api.post('/cart/checkout'),
